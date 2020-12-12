@@ -1,14 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function Navigator() {
     return (
         <ul className="c1-navigationalLinks">
             <li>
-                <Link to="/">Login</Link>
+                <NavLink exact to="/" activeClassName="selected-nav">
+                    Login
+                </NavLink>
             </li>
             <li>
-                <Link to="/what">About</Link>
+                <NavLink to="/what" activeClassName="selected-nav">
+                    About
+                </NavLink>
             </li>
             {/* <li>
                 <Link to="/dashboard">Dashboard</Link>
@@ -17,4 +21,4 @@ function Navigator() {
     )
 }
 
-export default Navigator;
+export default Navigator
