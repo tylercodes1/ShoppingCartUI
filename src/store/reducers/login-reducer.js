@@ -6,7 +6,7 @@ const loginReducer = (state = { isLoggedIn: false }, action) => {
     console.log(action)
     console.log(action.type)
     console.log(action.isLoggedIn)
-    console.log(action.isManager)
+    console.log(action.role)
     switch (action.type) {
         case LOGIN:
             return {
