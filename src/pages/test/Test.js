@@ -51,9 +51,12 @@ export default function TestPage() {
             setUsers(result.data)
             console.log(result) // full data + meta data
             console.log(result.data) // full data
-            console.log(result.data[0]) // individual entry
+            const tmp = result.data.filter(
+                (el) => el.email == 'admin2@gmail.com' && el.password == '1234'
+            )
+            console.log(tmp)
         } catch (e) {
-            console.log(e.response)
+            console.log(e)
         }
     }
 
@@ -148,6 +151,18 @@ export default function TestPage() {
         }
     }
 
+    const getUserById = async () => {
+        try {
+            const result = await Axios.get(
+                'http://3.135.225.25:8080/Project0/FindUserById?id=2'
+            )
+            console.log(result)
+            console.log(result.data)
+        } catch (e) {
+            console.log(e.response)
+        }
+    }
+
     const addClick = () => {
         setStat(state + 1)
     }
@@ -189,6 +204,8 @@ export default function TestPage() {
             <button onClick={() => getProductsWithStatus()}>
                 getProductsWithStatus
             </button>
+            <br />
+            <button onClick={() => getUserById()}>getUserById</button>
             {/* <br />
             <button onClick={() => showAllUsers()}>showAll</button>
             {users.map((user) => (
