@@ -7,8 +7,8 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import { useSelector } from 'react-redux'
 import { SettingsPage } from './pages/SettingsPage/SettingsPage'
 import { HomePage } from './pages/HomePage/HomePage'
-import { ProductsPage } from './pages/ProductsPage/ProductsPage'
 import { ShoppingCartPage } from './pages/ShoppingCartPage/ShoppingCartPage'
+import ProductsPage from './pages/ProductsPage/ProductsPage'
 
 function App() {
     const state = useSelector((store) => store)

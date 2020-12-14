@@ -114,6 +114,11 @@ export default function TestPage() {
 
     const showAllProducts = async () => {
         try {
+            const result = await Axios.get(
+                'http://3.135.225.25:8080/Project0/ShowProductList'
+            )
+            console.log(result)
+            console.log(result.data)
         } catch (e) {
             console.log(e.response)
         }
@@ -150,8 +155,8 @@ export default function TestPage() {
             <br />
             <button onClick={() => deleteUser()}>deleteUser</button>
             <LocalMallIcon />
-            {/* <br />
-            <button></button> */}
+            <br />
+            <button onClick={() => showAllProducts()}>showAllProducts</button>
             {/* <br />
             <button onClick={() => showAllUsers()}>showAll</button>
             {users.map((user) => (
@@ -166,7 +171,7 @@ export default function TestPage() {
     )
 }
 
-// // https://www.robinwieruch.de/react-hooks-fetch-data?fbclid=IwAR1bJCaD_T5EnDy9shcLNqcUqUw266Y4-RoPBSGjS2YIDQgYNatVdMyqD00
+// https://www.robinwieruch.de/react-hooks-fetch-data?fbclid=IwAR1bJCaD_T5EnDy9shcLNqcUqUw266Y4-RoPBSGjS2YIDQgYNatVdMyqD00
 // useEffect(async () => {
 //     // const result = await axios(
 //     //     'http://3.135.225.25:8080/Project0/Login?email=admin2@gmail.com&password=1234'

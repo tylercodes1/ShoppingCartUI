@@ -1,0 +1,8 @@
+.products-page {
+    height: calc(100% - 80px);
+    width: 100%;
+}
+
+.product {
+    background-color: lightblue;
+}

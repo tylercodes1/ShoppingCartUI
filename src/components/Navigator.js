@@ -3,8 +3,11 @@ import { NavLink } from 'react-router-dom'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
 import SettingsIcon from '@material-ui/icons/Settings'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import { useSelector } from 'react-redux'
 
 function Navigator() {
+    const store = useSelector((store) => store)
+    console.log(store)
     return (
         <nav className="navbar">
             <NavLink to="/home" className="home-icon">
@@ -32,14 +35,16 @@ function Navigator() {
                 >
                     <ShoppingCartIcon></ShoppingCartIcon>
                 </NavLink>
-                <NavLink
-                    className="nav-item"
-                    exact
-                    to="/test"
-                    activeClassName="selected-nav"
-                >
-                    Test
-                </NavLink>
+                {store.role === 'Manager' && (
+                    <NavLink
+                        className="nav-item"
+                        exact
+                        to="/test"
+                        activeClassName="selected-nav"
+                    >
+                        Test
+                    </NavLink>
+                )}
                 <NavLink
                     className="nav-item"
                     exact
