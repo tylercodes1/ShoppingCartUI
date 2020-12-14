@@ -3,6 +3,7 @@ import './ShoppingCartPage.css'
 import Axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
 
 export function ShoppingCartPage() {
     const [cartState, setCartState] = useState([])
@@ -33,7 +34,6 @@ export function ShoppingCartPage() {
     if (!store.isLoggedIn) {
         return <Redirect to="/"></Redirect>
     }
-    const getProductsByUserId = async (id) => {}
     const buildCart = (product, index) => {
         console.log(product)
         return (
@@ -42,13 +42,14 @@ export function ShoppingCartPage() {
                 <div>{product.status.status}</div>
                 <div>{product.price}</div>
                 <div>{product.orderDate}</div>
+                <RemoveCircleIcon className="btn"></RemoveCircleIcon>
             </div>
         )
     }
     return (
         <div className="shopping-cart-page">
             {/* id will be globally stored state */}
-            <button onClick={() => getProductsByUserId(2)}>show</button>
+            {/* <button onClick={() => console.log('pls')}>show</button> */}
             {cartState.map((el, ind) => buildCart(el, ind))}
         </div>
     )
