@@ -8,14 +8,19 @@ export function SettingsPage() {
     if (!store.isLoggedIn) {
         return <Redirect to="/"></Redirect>
     }
-    const changePassword = async () => {
+    const changePassword = async (password) => {
+        try {
+        } catch (e) {
+            console.log('error retrieving user')
+        }
+
         try {
             const result = await Axios.post(
-                'http://3.135.225.25:8080/Project0/ChangePassword?email=customerA@gmail.com&password=test999',
+                `http://3.135.225.25:8080/Project0/ChangePassword?email=${store.email}&password=${password}`,
                 {
                     headers: {
                         'Access-Control-Allow-Origin': '*',
-                        // 'Content-Type': 'application/json',
+                        'Content-Type': 'application/json',
                     },
                 }
             )
@@ -28,18 +33,29 @@ export function SettingsPage() {
         }
     }
 
-    const handleSubmit = () => {}
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const data = new FormData(e.target)
+        console.log(data.get('password'))
+        console.log(data.get('password-confirmation'))
+    }
 
     return (
         <div className="settings-page">
             <div className="settings-box">
                 <div>
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="email">email</label>
-                        <input id="email" name="email" type="text" />
+                        <label htmlFor="password">Password</label>
+                        <input id="password" name="email" type="password" />
                         <br />
-                        <label htmlFor="password">password</label>
-                        <input id="password" type="password" name="password" />
+                        <label htmlFor="password-confirmation">
+                            Confirm Password
+                        </label>
+                        <input
+                            id="password-confirmation"
+                            type="password"
+                            name="password-confirmation"
+                        />
                         <br />
                         <button>Change Password</button>
                     </form>

@@ -38,7 +38,7 @@
     border-radius: 8px;
     color: white;
     padding: 4px 16px;
-    transition: all 0.8 ease-in-out;
+    transition: all 0.2s ease-in-out;
     font-family: 'Segoe UI';
 }
 
@@ -49,5 +49,5 @@
 .shop-now:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: all 0.8 ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
