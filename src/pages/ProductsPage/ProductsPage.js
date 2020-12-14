@@ -4,9 +4,12 @@ import './ProductsPage.css'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function ProductsPage() {
     const [productState, setProductState] = useState([])
+    const store = useSelector((store) => store)
+
     useEffect(async () => {
         // const result = await axios(
         //     'http://3.135.225.25:8080/Project0/Login?email=admin2@gmail.com&password=1234'
@@ -29,7 +32,9 @@ export default function ProductsPage() {
         }
         fetchData()
     }, [])
-
+    if (!store.isLoggedIn) {
+        return <Redirect to="/"></Redirect>
+    }
     const addToShoppingCart = () => {
         alert('Added to shopping cart!')
         // return <Redirect to="/shopping-cart"></Redirect>
