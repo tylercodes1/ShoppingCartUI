@@ -16,7 +16,7 @@ The Shopping Cart UI is a website that allows users to add a list of items to th
   - React.js
   - Material-UI
   - AWS S3 Static Web Hosting
-  - Redux
+  - Redux State Management
 ### BackEnd
   - AWS EC2 Server Hosting
   - AWS RDS Database Hosting
