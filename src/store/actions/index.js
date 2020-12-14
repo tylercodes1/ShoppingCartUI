@@ -16,6 +16,7 @@ const loginAPI = async (email, password) => {
     }
 }
 
+//TODO getUserByEmail is a better endpoint
 const getUser = async (email, password) => {
     try {
         const result = await Axios.get(
