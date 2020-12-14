@@ -12,6 +12,7 @@ const loginReducer = (state = { isLoggedIn: false }, action) => {
             return {
                 isLoggedIn: action.isLoggedIn,
                 role: action.role,
+                userId: action.userId,
             }
         default:
             return state
