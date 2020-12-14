@@ -1,0 +1,8 @@
+.settings-page {
+    height: calc(100% - 80px);
+    width: 100%;
+}
+
+.logout {
+    cursor: pointer;
+}
