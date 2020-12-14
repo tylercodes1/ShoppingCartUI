@@ -40,9 +40,9 @@ export default function ProductsPage() {
         // return <Redirect to="/shopping-cart"></Redirect>
     }
 
-    const buildProducts = (product) => {
+    const buildProducts = (product, key) => {
         return (
-            <div className="product">
+            <div className="product" key={key}>
                 <div>{product.prductPrice}</div>
                 <div>{product.productDescription}</div>
                 <div>{product.productName}</div>
@@ -58,7 +58,9 @@ export default function ProductsPage() {
 
     return (
         <div className="products-page">
-            {productState.map((product) => buildProducts(product))}
+            {productState.map((product, index) =>
+                buildProducts(product, index)
+            )}
         </div>
     )
 }
