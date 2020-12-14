@@ -33,12 +33,43 @@ export default function ProductsPage() {
         }
         fetchData()
     }, [])
+
     if (!store.isLoggedIn) {
         return <Redirect to="/"></Redirect>
     }
-    const addToShoppingCart = () => {
+
+    const addProduct = async (name, price) => {
+        console.log(store.userId)
+        console.log(name)
+        console.log(price)
+        const id = store.userId
+        try {
+            await Axios.post(
+                'http://3.135.225.25:8080/Project0/ProductWithStatus',
+                {
+                    userId: 1,
+                    name: 'test',
+                    orderDate: 'Dec 1st', // TODO DateTime stuff
+                    price: 1000,
+                    status: 'Not Shipped',
+                },
+                {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json',
+                    },
+                }
+            )
+            console.log('madeit')
+            // console.log(result)
+            // console.log(result.data)
+        } catch (e) {
+            console.log(e.response.data)
+        }
+    }
+    const addToShoppingCart = async (name, price) => {
+        await addProduct(name, price)
         alert('Added to shopping cart!')
-        // return <Redirect to="/shopping-cart"></Redirect>
     }
 
     const buildProducts = (product, key) => {
@@ -58,7 +89,12 @@ export default function ProductsPage() {
                         >
                             <AddCircleIcon
                                 className="add-btn"
-                                onClick={() => addToShoppingCart()}
+                                onClick={() =>
+                                    addToShoppingCart(
+                                        product.productName,
+                                        product.prductPrice
+                                    )
+                                }
                                 style={{ color: '#4787f0' }}
                                 fontSize="large"
                             ></AddCircleIcon>

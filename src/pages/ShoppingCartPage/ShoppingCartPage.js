@@ -28,7 +28,7 @@ export function ShoppingCartPage() {
                 console.log(e.response)
             }
         }
-        fetchData()
+        setTimeout(() => fetchData(), 500)
     }, [])
 
     if (!store.isLoggedIn) {
