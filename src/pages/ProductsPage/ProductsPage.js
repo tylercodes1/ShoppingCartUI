@@ -5,6 +5,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Tooltip from '@material-ui/core/Tooltip'
 
 export default function ProductsPage() {
     const [productState, setProductState] = useState([])
@@ -43,15 +44,27 @@ export default function ProductsPage() {
     const buildProducts = (product, key) => {
         return (
             <div className="product" key={key}>
-                <div>{product.prductPrice}</div>
-                <div>{product.productDescription}</div>
-                <div>{product.productName}</div>
-                <Link to="shopping-cart">
-                    <AddCircleIcon
-                        className="add-btn"
-                        onClick={() => addToShoppingCart()}
-                    ></AddCircleIcon>
-                </Link>
+                <div>
+                    <h2 className="product-name">{product.productName}</h2>
+                    <p className="description">{product.productDescription}</p>
+                </div>
+                <div className="price-add">
+                    <p className="price">{product.prductPrice}</p>
+                    <Link to="shopping-cart">
+                        <Tooltip
+                            title="Add to Cart"
+                            aria-label="add to cart"
+                            arrow
+                        >
+                            <AddCircleIcon
+                                className="add-btn"
+                                onClick={() => addToShoppingCart()}
+                                style={{ color: '#4787f0' }}
+                                fontSize="large"
+                            ></AddCircleIcon>
+                        </Tooltip>
+                    </Link>
+                </div>
             </div>
         )
     }
