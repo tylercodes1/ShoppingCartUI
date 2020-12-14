@@ -22,7 +22,10 @@ export default function LoginPage() {
         // console.log(user)
         //here is where we would set redux state
         const resp = await login(data.get('email'), data.get('password'))
-        dispatch(resp)
+        const whet = dispatch(resp)
+        if (whet.isLoggedIn === false) {
+            alert('invalid credentials')
+        }
     }
 
     if (state.isLoggedIn) {
