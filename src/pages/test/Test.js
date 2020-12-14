@@ -130,7 +130,7 @@ export default function TestPage() {
     const getProductsByUserId = async () => {
         try {
             const result = await Axios.get(
-                ' http://3.135.225.25:8080/Project0/productWithStatusByUserId?id=2'
+                `http://3.135.225.25:8080/Project0/productWithStatusByUserId?id=${store.userId}`
             )
             console.log(result)
             console.log(result.data)
@@ -160,6 +160,32 @@ export default function TestPage() {
             console.log(result.data)
         } catch (e) {
             console.log(e.response)
+        }
+    }
+
+    const addProduct = async () => {
+        try {
+            const result = await Axios.post(
+                'http://3.135.225.25:8080/Project0/ProductWithStatus',
+                {
+                    userId: 1,
+                    name: 'test',
+                    orderDate: 'Dec 1st', // TODO DateTime stuff
+                    price: 1000,
+                    status: 'Not Shipped',
+                },
+                {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json',
+                    },
+                }
+            )
+            console.log('madeit')
+            console.log(result)
+            console.log(result.data)
+        } catch (e) {
+            console.log(e.response.data)
         }
     }
 
@@ -206,6 +232,8 @@ export default function TestPage() {
             </button>
             <br />
             <button onClick={() => getUserById()}>getUserById</button>
+            <br />
+            <button onClick={() => addProduct()}>addProduct</button>
             {/* <br />
             <button onClick={() => showAllUsers()}>showAll</button>
             {users.map((user) => (
