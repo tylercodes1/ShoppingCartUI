@@ -69,7 +69,7 @@ export function ShoppingCartPage() {
                     >
                         <RemoveCircleIcon
                             className="remove-btn"
-                            onClick={() => console.log('REMOVE FROM CART!')}
+                            onClick={() => removeItem(product)}
                             style={{ color: '#4787f0' }}
                             fontSize="large"
                         ></RemoveCircleIcon>
