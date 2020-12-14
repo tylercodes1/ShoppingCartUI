@@ -23,6 +23,6 @@ export const login = async (username, password) => {
     return {
         type: LOGIN,
         isLoggedIn: resp.includes('You have logged in') ? true : false,
-        isManager: resp.includes('Manager') ? 'Manager' : 'Customer',
+        role: resp.includes('Manager') ? 'Manager' : 'Customer',
     }
 }
