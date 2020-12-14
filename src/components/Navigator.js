@@ -11,7 +11,7 @@ function Navigator() {
     return (
         <nav className="navbar">
             <NavLink to="/home" className="home-icon">
-                <LocalMallIcon style={{ color: 'red', fontSize: '70' }} />
+                <LocalMallIcon style={{ color: '#4787f0', fontSize: '70' }} />
             </NavLink>
             <div className="nav-items">
                 <NavLink
@@ -60,7 +60,7 @@ function Navigator() {
                     activeClassName="selected-nav"
                 >
                     <SettingsIcon
-                        style={{ color: 'black', fontSize: '20' }}
+                        style={{ color: '#0f47a3', fontSize: '20' }}
                     ></SettingsIcon>
                 </NavLink>
                 {/* <li>
