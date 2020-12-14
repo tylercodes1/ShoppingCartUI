@@ -1,7 +1,6 @@
 .home-page {
     height: calc(100% - 80px);
     width: 100%;
-    background-color: #dfe9f7;
     display: flex;
     justify-content: center;
     align-items: center;
