@@ -1,8 +1,76 @@
 .settings-page {
     height: calc(100% - 80px);
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change-password form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    margin-bottom: 50px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04),
+        0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+    padding: 30px;
+}
+
+.change-password h2 {
+    margin-top: 0;
+}
+
+.change-password label {
+    align-self: start;
+}
+
+.change-password input {
+    background-color: var(--background-color);
+    padding: 6px;
+    border-radius: 8px;
+    border: 2px solid #e1eafa;
+    width: 100%;
+}
+
+.change-password button {
+    width: 175px;
+    margin: 0 auto;
+    background-color: var(--highlight-color);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 6px 16px;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Segoe UI';
+    font-weight: 600;
+}
+
+.change-password button:hover {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
 .logout {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
     cursor: pointer;
+    width: 160px;
+    margin: 0 auto;
+    background-color: var(--highlight-color);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 6px 16px;
+    transition: all 0.2s ease-in-out;
+}
+
+.logout:hover {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
 }

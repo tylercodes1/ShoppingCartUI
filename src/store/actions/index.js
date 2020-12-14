@@ -1,4 +1,4 @@
-import { LOGIN } from './actionTypes'
+import { LOGIN, LOGOUT } from './actionTypes'
 import Axios from 'axios'
 
 const loginAPI = async (email, password) => {
@@ -65,4 +65,8 @@ export const login = async (email, password) => {
         isLoggedIn: resp.includes('You have logged in') ? true : false,
         role: resp.includes('Manager') ? 'Manager' : 'Customer',
     }
+}
+
+export const logout = () => {
+    return { type: LOGOUT, isLoggedIn: false }
 }

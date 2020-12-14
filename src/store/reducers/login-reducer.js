@@ -1,4 +1,4 @@
-import { LOGIN } from '../actions/actionTypes'
+import { LOGIN, LOGOUT } from '../actions/actionTypes'
 import { Axios } from 'axios'
 
 const loginReducer = (state = { isLoggedIn: false }, action) => {
@@ -14,6 +14,8 @@ const loginReducer = (state = { isLoggedIn: false }, action) => {
                 role: action.role,
                 userId: action.userId,
             }
+        case LOGOUT:
+            return { isLoggedIn: false }
         default:
             return state
     }

@@ -42,15 +42,16 @@ export default function ProductsPage() {
         console.log(store.userId)
         console.log(name)
         console.log(price)
+        price = price.substring(1)
         const id = store.userId
         try {
             await Axios.post(
                 'http://3.135.225.25:8080/Project0/ProductWithStatus',
                 {
-                    userId: 1,
-                    name: 'test',
-                    orderDate: 'Dec 1st', // TODO DateTime stuff
-                    price: 1000,
+                    userId: store.userId,
+                    name: name,
+                    orderDate: new Date().toLocaleDateString(), // TODO DateTime stuff
+                    price: price,
                     status: 'Not Shipped',
                 },
                 {

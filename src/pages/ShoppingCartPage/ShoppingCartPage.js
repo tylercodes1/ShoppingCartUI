@@ -4,6 +4,7 @@ import Axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
+import Tooltip from '@material-ui/core/Tooltip'
 
 export function ShoppingCartPage() {
     const [cartState, setCartState] = useState([])
@@ -16,20 +17,36 @@ export function ShoppingCartPage() {
         // console.log(result)
         // console.log(result.data)
         // setDummyState(result.data)
-        const fetchData = async () => {
-            try {
-                const result = await Axios.get(
-                    ` http://3.135.225.25:8080/Project0/productWithStatusByUserId?id=${store.userId}`
-                )
-                console.log(result)
-                console.log(result.data)
-                setCartState(result.data)
-            } catch (e) {
-                console.log(e.response)
-            }
-        }
-        setTimeout(() => fetchData(), 500)
+
+        setTimeout(() => fetchData(), 350)
     }, [])
+
+    const fetchData = async () => {
+        try {
+            const result = await Axios.get(
+                ` http://3.135.225.25:8080/Project0/productWithStatusByUserId?id=${store.userId}`
+            )
+            console.log(result)
+            console.log(result.data)
+            setCartState(result.data)
+        } catch (e) {
+            console.log(e.response)
+        }
+    }
+    const removeItem = async (product) => {
+        try {
+            const result = await Axios.get(
+                `http://3.135.225.25:8080/Project0/DeleteProduct?id=${product.id}`
+            )
+            console.log(result)
+            console.log(result.data)
+            fetchData()
+            alert('Successfully removed product!')
+        } catch (e) {
+            console.log(e.response)
+            alert('error deleting product')
+        }
+    }
 
     if (!store.isLoggedIn) {
         return <Redirect to="/"></Redirect>
@@ -38,11 +55,26 @@ export function ShoppingCartPage() {
         console.log(product)
         return (
             <div className="cart-item">
-                <div>{product.name}</div>
-                <div>{product.status.status}</div>
-                <div>{product.price}</div>
-                <div>{product.orderDate}</div>
-                <RemoveCircleIcon className="btn"></RemoveCircleIcon>
+                <div className="cart-name-price">
+                    <h2 className="cart-product-name">{product.name}</h2>
+                    <p className="cart-price">${product.price}</p>
+                </div>
+                <p>Status: {product.status.status}</p>
+                <p>Order Date: {product.orderDate}</p>
+                <div className="remove-btn">
+                    <Tooltip
+                        title="Remove from Cart"
+                        aria-label="remove from cart"
+                        arrow
+                    >
+                        <RemoveCircleIcon
+                            className="remove-btn"
+                            onClick={() => console.log('REMOVE FROM CART!')}
+                            style={{ color: '#4787f0' }}
+                            fontSize="large"
+                        ></RemoveCircleIcon>
+                    </Tooltip>
+                </div>
             </div>
         )
     }

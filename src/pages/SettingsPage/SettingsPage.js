@@ -1,10 +1,13 @@
 import Axios from 'axios'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { logout } from '../../store/actions'
 import './SettingsPage.css'
 
 export function SettingsPage() {
     const store = useSelector((store) => store)
+    const dispatch = useDispatch()
+
     if (!store.isLoggedIn) {
         return <Redirect to="/"></Redirect>
     }
@@ -55,12 +58,18 @@ export function SettingsPage() {
         }
     }
 
+    const loggedOut = () => {
+        const resp = logout()
+        dispatch(resp)
+    }
+
     return (
         <div className="settings-page">
             <div className="settings-box">
-                <div>
+                <div className="change-password">
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="password">Password</label>
+                        <h2>Reset password</h2>
+                        <label htmlFor="password">New Password</label>
                         <input id="password" name="password" type="password" />
                         <br />
                         <label htmlFor="password-confirmation">
@@ -75,7 +84,7 @@ export function SettingsPage() {
                         <button>Change Password</button>
                     </form>
                 </div>
-                <h1 className="logout" onClick={() => console.log('logout')}>
+                <h1 className="logout" onClick={() => loggedOut()}>
                     Logout
                 </h1>
             </div>

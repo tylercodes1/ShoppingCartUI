@@ -35,7 +35,7 @@ function Navigator() {
                 >
                     <ShoppingCartIcon></ShoppingCartIcon>
                 </NavLink>
-                {store.role === 'Manager' && (
+                {/* {store.role === 'Manager' && (
                     <NavLink
                         className="nav-item"
                         exact
@@ -52,7 +52,7 @@ function Navigator() {
                     activeClassName="selected-nav"
                 >
                     Error
-                </NavLink>
+                </NavLink> */}
                 <NavLink
                     className="nav-item"
                     exact

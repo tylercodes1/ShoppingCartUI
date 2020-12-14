@@ -1,8 +1,47 @@
 .shopping-cart-page {
     height: calc(100% - 80px);
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cart-item {
-    background-color: aqua;
+    width: 400px;
+    margin: 20px auto 10px auto;
+    height: 150px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04),
+        0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart-item .cart-name-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item h2 {
+    margin: 0;
+}
+
+.cart-item p {
+    margin: 0;
+}
+
+.cart-item .cart-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.remove-btn {
+    align-self: flex-end;
+    cursor: pointer;
 }
