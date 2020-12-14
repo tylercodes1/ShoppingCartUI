@@ -52,7 +52,6 @@ export default function ProductsPage() {
 
     return (
         <div className="products-page">
-            <button onClick={() => showAllProducts()}>showAllProducts</button>
             {productState.map((product) => buildProducts(product))}
         </div>
     )
