@@ -136,6 +136,18 @@ export default function TestPage() {
         }
     }
 
+    const getProductsWithStatus = async () => {
+        try {
+            const result = await Axios.get(
+                'http://3.135.225.25:8080/Project0/ProductWithStatus'
+            )
+            console.log(result)
+            console.log(result.data)
+        } catch (e) {
+            console.log(e.response)
+        }
+    }
+
     const addClick = () => {
         setStat(state + 1)
     }
@@ -172,6 +184,10 @@ export default function TestPage() {
             <br />
             <button onClick={() => getProductsByUserId()}>
                 getProductsByUserId
+            </button>
+            <br />
+            <button onClick={() => getProductsWithStatus()}>
+                getProductsWithStatus
             </button>
             {/* <br />
             <button onClick={() => showAllUsers()}>showAll</button>
