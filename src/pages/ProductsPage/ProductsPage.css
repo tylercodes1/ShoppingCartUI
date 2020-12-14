@@ -6,3 +6,7 @@
 .product {
     background-color: lightblue;
 }
+
+.add-btn {
+    cursor: pointer;
+}
