@@ -8,10 +8,10 @@ import { Provider } from 'react-redux'
 import loginReducer from './store/reducers/login-reducer'
 
 const store = createStore(loginReducer)
-const state = store.getState()
+// const state = store.getState()
 
-console.log(state)
-console.log('store' + store)
+// console.log(state)
+// console.log('store' + store)
 
 ReactDOM.render(
     <React.StrictMode>

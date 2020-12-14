@@ -1,112 +1,43 @@
-import React, { useState, useEffect } from 'react'
-import './LoginPage.css'
-import Axios from 'axios'
+import React, { useState } from 'react'
+import { login } from './../../store/actions/index'
+import { useDispatch, useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import TestPage from './../test/Test'
 
 export default function LoginPage() {
-    const [state, setStat] = useState(0)
-    const [addCompState, setAddCompState] = useState('added')
-    const [dummyState, setDummyState] = useState()
-    const [users, setUsers] = useState([])
+    const state = useSelector((store) => store)
+    const dispatch = useDispatch()
 
-    const login = async () => {
-        try {
-            const result = await Axios.get(
-                'http://3.135.225.25:8080/Project0/Login?email=admin2@gmail.com&password=1234'
-            )
-
-            console.log(result)
-            console.log(result.data)
-        } catch (e) {
-            console.log(e.response.data)
-        }
+    if (state.isLoggedIn) {
+        return <Redirect to="/home"></Redirect>
+    }
+    // send login to api
+    // don't store in state
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const data = new FormData(e.target)
+        // console.log(data.get('email'))
+        // console.log(data.get('password'))
+        // console.log(user)
+        //here is where we would set redux state
+        const resp = await login(data.get('email'), data.get('password'))
+        dispatch(resp)
     }
 
-    const showAllUsers = async () => {
-        try {
-            const result = await Axios.get(
-                'http://3.135.225.25:8080/Project0/ShowAllUsers'
-            )
-
-            setUsers(result.data)
-            console.log(result)
-            console.log(result.data)
-            console.log(result.data[0])
-        } catch (e) {
-            console.log(e.response.data)
-        }
+    if (state.isLoggedIn) {
+        return <Redirect to="/test"></Redirect>
     }
-
-    const addClick = () => {
-        setStat(state + 1)
-    }
-
-    const changeColor = () => {
-        setAddCompState('added blue')
-    }
-
-    const addComponent = (thisKey) => {
-        return <div className={addCompState} key={thisKey}></div>
-    }
-
     return (
         <div>
-            <h1>HelloWhat'sUp</h1>
-            <button onClick={() => console.log('hello')}>toNotFound</button>
-            <br />
-            <button onClick={() => changeColor()}>changeColor</button>
-            <br />
-            <button onClick={() => addClick()}>addComponent</button>
-            <br />
-            <button onClick={() => login()}>login</button>
-            {/* <br />
-            <button onClick={() => showAllUsers()}>showAll</button>
-            {users.map((user) => (
-                // console.log(user.id)
-                <p>{user.email}</p>
-            ))} */}
-            {Array.from(Array(state).keys()).map((index) => {
-                return addComponent(index)
-            })}
-            {/* <div className="added"></div> */}
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="email">email</label>
+                <input id="email" name="email" type="text" />
+                <br />
+                <label htmlFor="password">password</label>
+                <input id="password" type="password" name="password" />
+                <br />
+                <button> btn</button>
+            </form>
         </div>
     )
 }
-
-// // https://www.robinwieruch.de/react-hooks-fetch-data?fbclid=IwAR1bJCaD_T5EnDy9shcLNqcUqUw266Y4-RoPBSGjS2YIDQgYNatVdMyqD00
-// useEffect(async () => {
-//     // const result = await axios(
-//     //     'http://3.135.225.25:8080/Project0/Login?email=admin2@gmail.com&password=1234'
-//     // )
-//     // console.log(result)
-//     // console.log(result.data)
-//     // setDummyState(result.data)
-//     const fetchData = async () => {
-//         // const result = await Axios.get
-//         // 'http://3.135.225.25:8080/Project0/ChangePassword?email=customerA@gmail.com&password=999' //post
-//         // 'http://3.135.225.25:8080/Project0/Login?email=admin2@gmail.com&password=1234'
-//         // 'http://18.222.140.73:8080/APIv2-0.0.1/HelloServlet'
-//         // 'http://18.222.140.73:8080/APIv2-0.0.1/UserServlet'
-//         // 'http://18.222.140.73:8080/APIv2-0.0.1/LoginServlet'
-//         // 'http://3.135.225.25:8080/Project0/ShowAllUsers'
-//         // 'http://localhost:4000/posts'
-//         // 'http://localhost:4000/login'
-//         // ()
-
-//         const result = await Axios.post(
-//             'http://18.222.140.73:8080/APIv2-0.0.1/LoginServlet',
-//             {
-//                 username: 'tko',
-//                 password: 'password1',
-//             }
-//             // {
-//             //     headers: {
-//             //         'content-type': 'application/json',
-//             //     },
-//             // }
-//         )
-//         console.log(result)
-//         console.log(result.data)
-//         setDummyState(result.data)
-//     }
-//     fetchData()
-// }, [])

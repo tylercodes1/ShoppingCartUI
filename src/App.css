@@ -1,3 +1,21 @@
+:root {
+    --highlight-color: green;
+    --background-color: #f8f8ff;
+}
+
+body {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--background-color);
+}
+
+#root {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
 .App {
     text-align: center;
 }
@@ -37,6 +55,35 @@
     }
 }
 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    background-color: yellow;
+    align-items: center;
+}
+
+.nav-items {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80px;
+    background-color: rgba(50, 50, 50, 0.4);
+    transition: 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+    background-color: var(--highlight-color);
+    transition: 0.2s ease-in-out;
+}
+
 .selected-nav {
-    background-color: #61dafb;
+    background-color: var(--highlight-color);
 }
