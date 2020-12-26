@@ -2,6 +2,7 @@
 Front-End for Shopping Cart API by Tianyuan
 <br>
 
+<img src='Project1Demo2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 ### FrontEnd Technologies
   - React.js
   - Material-UI
